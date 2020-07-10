@@ -6,6 +6,7 @@ from dynaconf import settings
 from pprint import pprint
 
 from realfastapi.routes.routes import api_router
+from realfastapi.db.mongodb_utils import dbConnect, dbDisconnect
 
 pprint(settings.PORT)
 pprint(settings.PASSWORD)
@@ -45,8 +46,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.add_event_handler("startup", connect_to_mongo)
-# app.add_event_handler("shutdown", close_mongo_connection)
+app.add_event_handler("startup", dbConnect)
+app.add_event_handler("shutdown", dbDisconnect)
 
 # routes
 app.include_router(api_router, prefix=str(settings.API_V1_STR))

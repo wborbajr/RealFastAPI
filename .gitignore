@@ -130,6 +130,6 @@ dmypy.json
 
 # RealFastAPI
 # Ignore dynaconf secret files
-.secrets.*
+.secrets.toml
 .env
 .vscode
