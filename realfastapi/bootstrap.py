@@ -1,15 +1,9 @@
+from dynaconf import settings
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from dynaconf import settings
-
-from pprint import pprint
-
-from realfastapi.routes.routes import api_router
 from realfastapi.db.mongodb_utils import dbConnect, dbDisconnect
-
-pprint(settings.PORT)
-pprint(settings.PASSWORD)
+from realfastapi.routes.routes import api_router
 
 app_description = """Servicio de datos REST-API de la AAPS.\n
 Ofrece puntos de acceso a los conjuntos de datos de la AAPS. Los conjuntos de datos actualmente integrados al servicio de datos son:\n
@@ -28,19 +22,9 @@ app = FastAPI(
 )
 
 # CORS
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-]
-
-# if not ALLOWED_HOSTS:
-#     ALLOWED_HOSTS = ["*"]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=settings.ALLOWED_HOSTS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

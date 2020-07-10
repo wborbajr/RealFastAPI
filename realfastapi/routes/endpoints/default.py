@@ -6,4 +6,3 @@ router = APIRouter()
 @router.get("/")
 def working():
     return {"Working"}
-

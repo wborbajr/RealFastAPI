@@ -1,8 +1,7 @@
 from databases import DatabaseURL
-from motor.motor_asyncio import AsyncIOMotorClient
-
 from dynaconf import settings
 from loguru import logger
+from motor.motor_asyncio import AsyncIOMotorClient
 
 from realfastapi.db.mongodb import db
 
