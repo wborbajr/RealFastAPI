@@ -1,0 +1,22 @@
+[default]
+PROJECT_NAME = 'RealFastAPI example application'
+
+[development]
+DATABASE_URL = 'sqlite:///:memory:'
+API_V1_STR = '/devapi/v1'
+PORT = 2020
+ALLOWED_HOSTS = '"127.0.0.1", "localhost"'
+MONGO_HOST = 'localhost'
+MONGO_PORT = 27017
+MONGO_USER = 'real'
+MONGO_DB = 'fastapidev'
+
+[production]
+DATABASE_URL = 'sqlite:///:memory:'
+API_V1_STR = '/api/v1'
+PORT = 3030
+ALLOWED_HOSTS = '0.0.0.0'
+MONGO_HOST = 'localhost'
+MONGO_PORT = 27017
+MONGO_USER = 'real'
+MONGO_DB = 'fastapi'
